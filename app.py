@@ -43,6 +43,6 @@ st.title("Simple Gemini ChatBot")
 message = st.chat_message("user")
 message.write("Hello human:")
 
-prompt = st.chat_input("Say something")
+prompt = st.chat_input("Say something:")
 if prompt:
     st.write(f"User has sent the following prompt: {prompt}")
