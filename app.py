@@ -30,19 +30,44 @@ model = genai.GenerativeModel(
   # See https://ai.google.dev/gemini-api/docs/safety-settings
 )
 
-chat_session = model.start_chat()
+chat_session = model.start_chat(
+  history=[
+  ]
+)
 
-response = chat_session.send_message("INSERT_INPUT_HERE")
+#response = chat_session.send_message("INSERT_INPUT_HERE")
 
-print(response.text)
+#print(response.text)
 
 import streamlit as st
 
 st.title("Simple Gemini ChatBot")
 
-message = st.chat_message("user")
-message.write("Hello human:")
 
-prompt = st.chat_input("Say something:")
-if prompt:
-    st.write(f"User has sent the following prompt: {prompt}")
+#Initialize chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+# React to user input
+if prompt := st.chat_input("Say something:"):
+    # Display user message in chat message container
+    with st.chat_message("user"):
+        st.markdown(prompt)
+    # Add user message to chat history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+
+
+
+    #response = f"Echo: {prompt}"
+    response = chat_session.send_message(prompt)
+    # Display assistant response in chat message container
+    with st.chat_message("assistant"):
+        st.markdown(chat_session.last.text)
+    # Add assistant response to chat history
+    st.session_state.messages.append({"role": "assistant", "content": chat_session.last.text})
+
