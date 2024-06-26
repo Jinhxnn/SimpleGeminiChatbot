@@ -40,8 +40,10 @@ chat_session = model.start_chat(
 #print(response.text)
 
 import streamlit as st
+import random
+import time
 
-st.title("Simple Gemini ChatBot")
+st.title("Simple ChatBot")
 
 
 #Initialize chat history
