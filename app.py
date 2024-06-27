@@ -77,11 +77,6 @@ if prompt := st.chat_input("Say something:"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    # Generate simulated response
-    for word in response_generator():
-        st.write(word) # Print each word of the response
-
-
 
     #response = f"Echo: {prompt}"
     
@@ -90,7 +85,9 @@ if prompt := st.chat_input("Say something:"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        st.markdown(chat_session.last.text)
+        for word in response_generator().split():
+            st.write(word)
+            time.sleep(0.05)
 
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": chat_session.last.text})
