@@ -85,7 +85,7 @@ if prompt := st.chat_input("Say something:"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        for word in response_generator().split():
+        for word in response_generator():
             st.write(word)
             time.sleep(0.05)
 
