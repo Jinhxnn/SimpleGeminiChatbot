@@ -43,6 +43,20 @@ import streamlit as st
 import random
 import time
 
+# Streamed response emulator
+def response_generator():
+    response = random.choice(
+        [
+            "Hello there! How can I assist you today?",
+            "Hi, human! Is there anything I can help you with?",
+            "Do you need help?",
+        ]
+    )
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
+
+
 st.title("Simple ChatBot")
 
 
@@ -63,13 +77,21 @@ if prompt := st.chat_input("Say something:"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
+    # Generate simulated response
+    for word in response_generator():
+        st.write(word) # Print each word of the response
+
 
 
     #response = f"Echo: {prompt}"
+    
+    # Send message to the model
     response = chat_session.send_message(prompt)
+
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(chat_session.last.text)
+
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": chat_session.last.text})
 
