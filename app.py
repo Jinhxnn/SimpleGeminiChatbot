@@ -69,7 +69,7 @@ def display_assistant_response_with_delay():
         st.markdown("Assistant is typing...")  # Show typing indicator or message
 
         
-        time.sleep(1.5)  # Adjust the delay time in seconds
+        time.sleep(1.0)  # Adjust the delay time in seconds
 
         # Get assistant's response
         assistant_response = chat_session.last.text
