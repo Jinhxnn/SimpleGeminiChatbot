@@ -81,6 +81,11 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+# Added a button to clear the chat
+if st.button("Clear and Restart Chat"):
+     st.session_state.messages = []
+     st.experimental_rerun()
+
 # React to user input
 if prompt := st.chat_input("Say something:"):
     # Display user message in chat message container
