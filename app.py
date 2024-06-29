@@ -65,18 +65,16 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 def display_assistant_response_with_delay():
-    # Display typing indicator or interim message
-    with st.empty():  # Placeholder to update dynamically
+        # Display typing indicator or interim message
         st.markdown("Assistant is typing...")  # Show typing indicator or message
 
-        # Simulate a delay (adjust the sleep duration as needed)
+        
         time.sleep(1.5)  # Adjust the delay time in seconds
 
         # Get assistant's response
         assistant_response = chat_session.last.text
 
-        # Update the message with the assistant's response
-        st.empty().markdown(assistant_response)
+        st.markdown(assistant_response)
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
