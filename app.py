@@ -68,7 +68,7 @@ def display_assistant_response_with_delay():
         # Display typing indicator or interim message
         st.markdown("Assistant is typing...")  # Show typing indicator or message
 
-        # Simulate a delay (adjust the sleep duration as needed)
+        
         time.sleep(1.5)  # Adjust the delay time in seconds
 
         # Get assistant's response
