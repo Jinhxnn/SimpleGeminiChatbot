@@ -87,6 +87,28 @@ with st.sidebar:
         st.session_state.messages = []
         st.experimental_rerun()
 
+# Theme toggle button
+theme_options = ["Light Mode", "Dark Mode"]
+current_theme = st.selectbox("Select Theme:", theme_options)
+
+if current_theme == "Dark Mode":
+    st.markdown("""
+        <style>
+        body {
+            background-color: #1f2a38;
+            color: white;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+else:
+    st.markdown("""
+        <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+        </style>
+    """, unsafe_allow_html=True)
 
     
 
