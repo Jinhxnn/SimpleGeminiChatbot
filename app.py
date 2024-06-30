@@ -88,6 +88,7 @@ with st.sidebar:
         st.experimental_rerun()
 
 
+
 # React to user input
 if prompt := st.chat_input("Say something:"):
     # Display user message in chat message container
