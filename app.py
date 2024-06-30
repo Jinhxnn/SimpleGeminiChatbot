@@ -87,10 +87,6 @@ with st.sidebar:
         st.session_state.messages = []
         st.experimental_rerun()
 
-    
-    if st.button("Toggle Typing Indicator"):
-        st.session_state.show_typing_indicator = not st.session_state.get("show_typing_indicator", True)
-
 
     
 
