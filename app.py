@@ -87,9 +87,6 @@ with st.sidebar:
         st.session_state.messages = []
         st.experimental_rerun()
 
-    st.session_state.show_typing_indicator = st.checkbox("Show Typing Indicator", value=st.session_state.show_typing_indicator)
-    
-
 
 
 # React to user input
